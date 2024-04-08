@@ -9,15 +9,9 @@
 </head>
 <body>
       <ul class="nav">
-            <li class="nav-item" v-for="link in links">
-              <a class="nav-link active" aria-current="page" href="#">{{ link }}</a>
+            <li class="nav-item" v-for="(link, index) in links" :key="index">
+              <a class="nav-link active" aria-current="page" :href="link.url">{{ link.text }}</a>
             </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="#">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li> -->
           </ul>
 
       <div id="content" class="container">
@@ -30,7 +24,12 @@
             Vue.createApp({
                   data() {
                         return {
-                              links: ['Home', 'About Us', 'Contact']
+                              // links: ['Home', 'About Us', 'Contact']
+                              links: [
+                                    {'text': 'Home', url: 'index.html'},
+                                    {'text': 'About Us', url: 'aboutus.html'},
+                                    {'text': 'Contact', url: 'contact.html'},
+                              ]
                         }
                   }
             }).mount('.nav')
